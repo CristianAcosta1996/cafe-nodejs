@@ -7,6 +7,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.usuariosPath = "/api/v1/users";
+    this.authPath = "/api/v1/auth";
 
     this.middlewares();
     this.routes();
@@ -22,6 +23,7 @@ class Server {
 
   routes() {
     this.app.use(this.usuariosPath, require("../routes/user.routes"));
+    this.app.use(this.authPath, require("../routes/auth.routes"));
   }
 
   middlewares() {
